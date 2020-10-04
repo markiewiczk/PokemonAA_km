@@ -1,11 +1,9 @@
-package pl.sdaacademy.PokemonAcademyApi.repository;
+package pl.sdaacademy.PokemonAcademyApi.app_loader.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 @Repository
 public class PokeApiRepository {

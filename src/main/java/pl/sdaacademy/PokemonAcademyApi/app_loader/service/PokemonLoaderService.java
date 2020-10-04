@@ -1,13 +1,14 @@
-package pl.sdaacademy.PokemonAcademyApi.service;
+package pl.sdaacademy.PokemonAcademyApi.app_loader.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import pl.sdaacademy.PokemonAcademyApi.repository.*;
+import pl.sdaacademy.PokemonAcademyApi.app_loader.repository.*;
+import pl.sdaacademy.PokemonAcademyApi.common.repository.Pokemon;
+import pl.sdaacademy.PokemonAcademyApi.common.repository.PokemonRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class PokemonLoaderService {

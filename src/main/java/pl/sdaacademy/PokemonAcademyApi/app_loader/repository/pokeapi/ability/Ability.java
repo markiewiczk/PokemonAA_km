@@ -1,8 +1,6 @@
-package pl.sdaacademy.PokemonAcademyApi.app_loader.repository;
+package pl.sdaacademy.PokemonAcademyApi.app_loader.repository.pokeapi.ability;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.List;
 
 public class Ability {
     @JsonProperty("ability")

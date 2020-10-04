@@ -1,4 +1,4 @@
-package pl.sdaacademy.PokemonAcademyApi.app_loader.repository;
+package pl.sdaacademy.PokemonAcademyApi.app_loader.repository.pokeapi.type;
 
 public class TypeDetails {
 

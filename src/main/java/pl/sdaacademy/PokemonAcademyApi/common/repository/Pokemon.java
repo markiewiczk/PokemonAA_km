@@ -1,7 +1,4 @@
-package pl.sdaacademy.PokemonAcademyApi.repository;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.web.client.RestTemplate;
+package pl.sdaacademy.PokemonAcademyApi.common.repository;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
