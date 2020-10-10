@@ -4,13 +4,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import pl.sdaacademy.PokemonAcademyApi.common.NoPokemonFoundExeption;
+import pl.sdaacademy.PokemonAcademyApi.common.NoPokemonFoundException;
 
 @ControllerAdvice
 public class ErrorHandler {
 
-    @ExceptionHandler(value = NoPokemonFoundExeption.class)
-    public ResponseEntity<Object> noSuchElementExeption(NoPokemonFoundExeption e) {
+    @ExceptionHandler(value = NoPokemonFoundException.class)
+    public ResponseEntity<Object> noSuchElementExeption(NoPokemonFoundException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

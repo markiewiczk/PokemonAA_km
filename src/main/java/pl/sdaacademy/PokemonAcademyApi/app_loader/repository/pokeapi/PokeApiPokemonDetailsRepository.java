@@ -7,11 +7,11 @@ import org.springframework.web.client.RestTemplate;
 import pl.sdaacademy.PokemonAcademyApi.app_loader.repository.pokeapi.PokemonDetailsResponse;
 
 @Repository
-public class PokemonDetailsRepository {
+public class PokeApiPokemonDetailsRepository {
     private final RestTemplate restTemplate;
 
     @Autowired
-    public PokemonDetailsRepository(RestTemplate restTemplate) {
+    public PokeApiPokemonDetailsRepository(RestTemplate restTemplate) {
 
         this.restTemplate = restTemplate;
     }

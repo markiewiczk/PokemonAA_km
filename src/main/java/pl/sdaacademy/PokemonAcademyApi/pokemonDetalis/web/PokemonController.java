@@ -21,6 +21,6 @@ public class PokemonController {
 
     @GetMapping("/{name}")
     public PokemonDetails getPokemon(@PathVariable String name) {
-        return pokemonService.getPokemon(name);
+        return pokemonService.getPokemonDetails(name);
     }
 }
