@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class AppComponentProvider {
+
     @Bean
     public RestTemplate restTemplate() {
         CloseableHttpClient httpClient = HttpClients.custom()

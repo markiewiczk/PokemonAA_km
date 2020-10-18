@@ -6,20 +6,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 @Repository
-public class PokeApiRepository {
+public class PokeapiRepository {
     private final String urlAddress;
     private final RestTemplate restTemplate;
 
     @Autowired
-    public PokeApiRepository(RestTemplate restTemplate, @Value("${pokeapi.url}") String urlAddress) {
+    public PokeapiRepository(RestTemplate restTemplate, @Value("${pokeapi.url}") String urlAddress) {
         this.restTemplate = restTemplate;
         this.urlAddress = urlAddress;
     }
 
-
-    public PokemonResponse getPokemonsResponse(int limit, int offset) {
-        RestTemplate restTemplate = new RestTemplate();
+    public PokemonResponse getPokemonResponse(int offset, int limit) {
         return restTemplate.getForObject(
-                String.format(urlAddress, limit, offset), PokemonResponse.class);
+                String.format(urlAddress, offset, limit), PokemonResponse.class);
     }
 }

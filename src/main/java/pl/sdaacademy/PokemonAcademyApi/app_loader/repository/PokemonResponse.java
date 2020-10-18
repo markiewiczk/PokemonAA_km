@@ -1,6 +1,5 @@
 package pl.sdaacademy.PokemonAcademyApi.app_loader.repository;
 
-
 import java.util.List;
 
 public class PokemonResponse {
@@ -8,7 +7,6 @@ public class PokemonResponse {
     private String next;
 
     private List<PokemonResult> results;
-
 
     public String getNext() {
         return next;
