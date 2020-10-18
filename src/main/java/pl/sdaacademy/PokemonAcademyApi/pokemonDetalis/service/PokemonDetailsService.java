@@ -3,8 +3,8 @@ package pl.sdaacademy.PokemonAcademyApi.pokemonDetalis.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sdaacademy.PokemonAcademyApi.app_loader.repository.*;
-import pl.sdaacademy.PokemonAcademyApi.app_loader.repository.pokeapi.PokeApiPokemonDetailsRepository;
-import pl.sdaacademy.PokemonAcademyApi.app_loader.repository.pokeapi.PokemonDetailsResponse;
+import pl.sdaacademy.PokemonAcademyApi.pokemonDetalis.pokeapi.PokeApiPokemonDetailsRepository;
+import pl.sdaacademy.PokemonAcademyApi.pokemonDetalis.pokeapi.PokemonDetailsResponse;
 import pl.sdaacademy.PokemonAcademyApi.app_loader.service.PokemonDetailsTransformer;
 import pl.sdaacademy.PokemonAcademyApi.common.NoPokemonFoundException;
 import pl.sdaacademy.PokemonAcademyApi.common.repository.Pokemon;
@@ -22,6 +22,7 @@ public class PokemonDetailsService {
     private final PokeApiPokemonDetailsRepository pokeApiPokemonDetailsRepository;
     private final PokemonDetailsTransformer pokemonDetailsTransformer;
     private final PokemonDetailsRepository pokemonDetailsRepository;
+
     @Autowired
     public PokemonDetailsService(PokemonRepository pokemonRepository,
                                  PokeApiPokemonDetailsRepository pokeApiPokemonDetailsRepository,
@@ -32,12 +33,14 @@ public class PokemonDetailsService {
         this.pokemonDetailsTransformer = pokemonDetailsTransformer;
         this.pokemonDetailsRepository = pokemonDetailsRepository;
     }
-    public PokemonDetails getPokemonDetails(String name) {
-        Pokemon pokemon = pokemonRepository.findByName(name).orElseThrow(() -> {
+
+    public PokemonDetails getPokemonDetails(String name) throws NoPokemonFoundException {
+        Pokemon pokemon = pokemonRepository.findByName(name).<NoPokemonFoundException>orElseThrow(() -> {
             throw new NoPokemonFoundException(name);
         });
         return providePokemonDetails(pokemon);
     }
+
     public List<PokemonDetails> getPokemonDetails(List<String> pokemonNames) {
         return pokemonNames.stream().map(pokemonRepository::findByName)
                 .filter(Optional::isPresent)
@@ -45,23 +48,26 @@ public class PokemonDetailsService {
                 .map(this::providePokemonDetails)
                 .collect(Collectors.toList());
     }
+
     private PokemonDetails providePokemonDetails(Pokemon pokemon) {
         return pokemonDetailsRepository
                 .findById(pokemon.getName())
-                .orElseGet(()->{
+                .orElseGet(() -> {
                     PokemonDetails pokemonDetails =
                             getPokemonDetailsFromApi(pokemon.getUrl());
                     savePokemonDetailsToRepo(pokemonDetails);
                     return pokemonDetails;
                 });
     }
+
     private PokemonDetails getPokemonDetailsFromApi(String url) {
         PokemonDetailsResponse response = pokeApiPokemonDetailsRepository
                 .pokemonDetailsResponse(url);
         return pokemonDetailsTransformer.transformToPokemonDetails(response);
     }
+
     private void savePokemonDetailsToRepo(PokemonDetails details) {
         pokemonDetailsRepository.findById(details.getName())
-                .orElseGet(()-> pokemonDetailsRepository.save(details));
+                .orElseGet(() -> pokemonDetailsRepository.save(details));
     }
 }

@@ -1,4 +1,4 @@
-package pl.sdaacademy.PokemonAcademyApi.app_loader.repository.pokeapi.image;
+package pl.sdaacademy.PokemonAcademyApi.pokemonDetalis.pokeapi.image;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

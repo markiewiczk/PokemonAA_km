@@ -2,7 +2,7 @@ package pl.sdaacademy.PokemonAcademyApi.app_loader.service;
 
 import org.springframework.stereotype.Component;
 import pl.sdaacademy.PokemonAcademyApi.app_loader.repository.PokemonDetails;
-import pl.sdaacademy.PokemonAcademyApi.app_loader.repository.pokeapi.PokemonDetailsResponse;
+import pl.sdaacademy.PokemonAcademyApi.pokemonDetalis.pokeapi.PokemonDetailsResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package pl.sdaacademy.PokemonAcademyApi.app_loader.repository.pokeapi.type;
+package pl.sdaacademy.PokemonAcademyApi.pokemonDetalis.pokeapi.type;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
